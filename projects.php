@@ -1,108 +1,83 @@
-﻿<!DOCTYPE html>
+<?php
+$projects = [
+  [
+    'slug' => 'shri-radha-sharnam', 'name' => 'Shri Radha Sharnam', 'type' => 'Residential',
+    'location' => 'Keshav Dham Road', 'budget' => '₹74.65 L onwards', 'budget_key' => 'under-1cr',
+    'status' => 'Ready to move', 'configuration' => '1 BHK', 'tag' => 'Featured residence',
+    'image' => 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85',
+    'intro' => 'Fully furnished residences designed for long weekends, longer stays and a life at a gentler pace.'
+  ],
+  [
+    'slug' => 'raal-road-township', 'name' => 'RAAL Road Township', 'type' => 'Plots & Land',
+    'location' => 'NH-19, Chatikara', 'budget' => '₹120 / sq. yd. onwards', 'budget_key' => 'under-1cr',
+    'status' => 'Selling now', 'configuration' => 'Plots', 'tag' => '100-acre township',
+    'image' => 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85',
+    'intro' => 'A considered township with generous green spaces, clear titles and room to make your own.'
+  ],
+  [
+    'slug' => 'shri-vivek-heritage', 'name' => 'Shri Vivek Heritage', 'type' => 'Commercial',
+    'location' => 'High street, Vrindavan', 'budget' => '₹55 L onwards', 'budget_key' => '1cr-3cr',
+    'status' => 'Upcoming', 'configuration' => 'Retail & offices', 'tag' => 'High street living',
+    'image' => 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85',
+    'intro' => 'Distinctive commercial spaces positioned for visibility, footfall and the next chapter of Vrindavan.'
+  ],
+  [
+    'slug' => 'vrindawali-farms', 'name' => 'Vrindawali Farms & Residency', 'type' => 'Plots & Land',
+    'location' => 'Outskirts of Vrindavan', 'budget' => '₹28,000 / sq. yd.', 'budget_key' => 'under-1cr',
+    'status' => 'Selling now', 'configuration' => 'Farm plots', 'tag' => 'Slow living',
+    'image' => 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=85',
+    'intro' => 'Farmhouse living with open skies, landscaped avenues and a softer rhythm of everyday life.'
+  ],
+];
+$filters = ['location' => $_GET['location'] ?? 'all', 'type' => $_GET['type'] ?? 'all', 'budget' => $_GET['budget'] ?? 'all', 'status' => $_GET['status'] ?? 'all', 'configuration' => $_GET['configuration'] ?? 'all'];
+$matches = array_filter($projects, function ($project) use ($filters) {
+  return ($filters['location'] === 'all' || stripos($project['location'], $filters['location']) !== false)
+    && ($filters['type'] === 'all' || $project['type'] === $filters['type'])
+    && ($filters['budget'] === 'all' || $project['budget_key'] === $filters['budget'])
+    && ($filters['status'] === 'all' || $project['status'] === $filters['status'])
+    && ($filters['configuration'] === 'all' || $project['configuration'] === $filters['configuration']);
+});
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects - Braj Kutir Real Estate | Vrindavan</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover considered residences, plots and commercial property in Vrindavan with Braj Kutir.">
+  <title>Projects | Braj Kutir — Curated real estate in Vrindavan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- NAVIGATION -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
-      <div class="nav-contact"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
-      <div class="nav-links">
-        <a href="index.php">Home</a>
-        <div class="nav-dropdown"><a href="#">Services <i class="fas fa-chevron-down"></i></a>
-          <div class="dropdown-menu"><a href="#">Buy</a><a href="#">Sell</a><a href="#">Lease</a><a href="#">Land</a></div>
-        </div>
-        <a href="aboutus.php">About us</a>
-        <a href="projects.php" style="color: var(--primary); font-weight: 600;">Projects</a>
-        <a href="nri-desk.php">NRI Desk</a>
-        <a href="invest-in-vrindavan.php">Invest in Vrindavan</a>
-        <a href="career.php">Career</a>
-        <a href="contact.php">Contact</a>
-        <a href="#" class="nav-cta">Get Property Guidance</a>
-      </div>
-      <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+<body class="projects-page">
+  <nav class="navbar premium-nav" id="navbar"><div class="container">
+    <a href="index.php" class="nav-logo"><span class="home-mark">BK</span><span class="home-logo-word">Braj Kutir<small>REAL ESTATE</small></span></a>
+    <div class="nav-links"><a href="index.php">Home</a><a href="projects.php" class="active">Projects</a><a href="aboutus.php">About us</a><a href="invest-in-vrindavan.php">Why Vrindavan</a><a href="#enquire" class="nav-cta">Schedule a visit</a></div>
+    <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div></nav>
+  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close">&times;</button><a href="index.php">Home</a><a href="projects.php">Projects</a><a href="aboutus.php">About us</a><a href="invest-in-vrindavan.php">Why Vrindavan</a><a href="#enquire">Schedule a visit</a></div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close">&times;</button>
-    <a href="index.php">Home</a><a href="#">Buy</a><a href="#">Sell</a><a href="#">Lease</a><a href="#">Land</a>
-    <a href="aboutus.php">About us</a><a href="projects.php">Projects</a><a href="nri-desk.php">NRI Desk</a>
-    <a href="invest-in-vrindavan.php">Invest in Vrindavan</a><a href="career.php">Career</a><a href="contact.php">Contact</a>
-  </div>
-
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb"><div class="container"><a href="index.php"><i class="fas fa-home"></i></a><span>></span><span>Projects</span></div></div>
-
-  <!-- PAGE HEADER -->
-  <section class="page-header"><div class="container"><h1>Our Projects</h1><p>Explore Braj Kutir's Verified Collection of Premium Properties in Vrindavan</p></div></section>
-
-  <!-- FILTER -->
-  <section class="section" style="background: var(--white); padding-top: 0;"><div class="container">
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--spacing-md); margin-bottom: var(--spacing-xl);">
-      <div class="filter-tabs"><div class="filter-tab active">All</div><div class="filter-tab">Residential</div><div class="filter-tab">Commercial</div><div class="filter-tab">Plots</div><div class="filter-tab">Luxury</div><div class="filter-tab">Upcoming</div></div>
-      <select class="filter-select"><option>Sort by: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest First</option></select>
-    </div>
-  </div></section>
-
-  <!-- PROJECTS GRID -->
-  <section class="section reveal"><div class="container">
-    <div class="auto-grid-2">
-      <div class="card"><div class="card-image"><i class="fas fa-city"></i><div class="card-badge featured">Featured</div></div><div class="card-content"><h3>RAAL Road Integrated Township</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> NH-19, Chatikara, Vrindavan</div><p class="card-description">100 Acre Premium Township with world-class amenities, green spaces, and modern infrastructure.</p><div class="card-meta"><div class="card-price">Starting â‚¹120 / Sq. Yard</div><div class="card-role">Exclusive Sales Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-building"></i><div class="card-badge luxury">Luxury</div></div><div class="card-content"><h3>Shri Vivek Heritage High Rise</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> NH-19, Chhatikara, Vrindavan</div><p class="card-description">Upcoming Ultra Luxury Apartments with premium finishes, state-of-the-art amenities, and panoramic views.</p><div class="card-meta"><div class="card-price">â‚¹11,000 / sq ft</div><div class="card-role">Exclusive Sales Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-map"></i><div class="card-badge">Plots</div></div><div class="card-content"><h3>Shri Vivek Heritage Plots</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> NH-19, Chhatikara, Vrindavan</div><p class="card-description">Premium Residential Plots with clear titles, development potential, and excellent connectivity.</p><div class="card-meta"><div class="card-price">â‚¹55,000 / sq yard</div><div class="card-role">Exclusive Sales Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-home"></i></div><div class="card-content"><h3>Shri Radha Sharnam</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> Keshav Dham Road, Near Prem Mandir</div><p class="card-description">1BHK Fully Furnished Serviced Apartments with modern amenities, security, and maintenance services.</p><div class="card-meta"><div class="card-price">â‚¹74.65 Lakhs</div><div class="card-role">Exclusive Sales Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-villa"></i><div class="card-badge new">New</div></div><div class="card-content"><h3>The House of Abhinandan Lodha</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> Premium Location, Vrindavan</div><p class="card-description">Luxury Plots & Villas in an exclusive gated community with premium amenities and security.</p><div class="card-meta"><div class="card-price">Price on Request</div><div class="card-role">Preferred Channel Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-hotel"></i></div><div class="card-content"><h3>Vrindawali Farms & Residency</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> Scenic Location, Vrindavan</div><p class="card-description">Township & Plots offering farmhouse living experience with green surroundings and modern amenities.</p><div class="card-meta"><div class="card-price">From â‚¹28,000 / sq yard</div><div class="card-role">Exclusive Sales Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-shopping-center"></i></div><div class="card-content"><h3>Omaxe Courtyard</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> Commercial Hub, Vrindavan</div><p class="card-description">Commercial spaces including shops, offices, and showrooms in a prime location with high footfall.</p><div class="card-meta"><div class="card-price">â‚¹55 Lakh to â‚¹3.6 Cr</div><div class="card-role">Channel Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-      <div class="card"><div class="card-image"><i class="fas fa-landmark"></i></div><div class="card-content"><h3>Omaxe Raal Road</h3><div class="card-location"><i class="fas fa-map-marker-alt"></i> Raal Road, Vrindavan</div><p class="card-description">Premium Plots & Villas with excellent connectivity and development potential in a growing area.</p><div class="card-meta"><div class="card-price">â‚¹57,000 / sq yard</div><div class="card-role">Channel Partner</div></div><div class="card-actions"><a href="#" class="btn btn-primary">View Details</a><a href="#" class="btn btn-outline">Brochure</a></div></div></div>
-    </div>
-  </div></section>
-
-  <!-- CTA -->
-  <section class="section reveal" style="background: var(--cream);"><div class="container text-center">
-    <span class="section-label">Find Your Dream Property</span><h2>Looking for Something Specific?</h2>
-    <p class="mb-xl">Can't find what you're looking for? Our team can help you find the perfect property that matches your requirements and budget.</p>
-    <div style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap;">
-      <a href="#" class="btn btn-primary">Contact Our Team â†’</a>
-      <a href="invest-in-vrindavan.php" class="btn btn-outline">Investment Opportunities</a>
-    </div>
-  </div></section>
-
-  <!-- FOOTER -->
-  <footer class="footer"><div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
-        <p>Vrindavan's first dedicated real estate advisory, built on the promise of transparency, simplicity, and trust.</p>
-        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@brajkutir.com</span></div>
-        <div class="footer-socials">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.php">Home</a></li><li><a href="aboutus.php">About Us</a></li><li><a href="projects.php">Projects</a></li><li><a href="invest-in-vrindavan.php">Invest in Vrindavan</a></li><li><a href="nri-desk.php">NRI Desk</a></li><li><a href="career.php">Career</a></li><li><a href="contact.php">Contact</a></li><li><a href="#">Partner with Us</a></li><li><a href="#">Blogs</a></li></ul></div>
-      <div class="footer-col"><h4>Services</h4><ul><li><a href="#">Buy</a></li><li><a href="#">Sell</a></li><li><a href="#">Lease</a></li><li><a href="#">Land</a></li><li><a href="#">Property Guidance</a></li></ul></div>
-      <div class="footer-col"><h4>Offices</h4><ul><li><strong style="color: var(--white);">Vrindavan</strong></li><li><a href="#">Registered Office</a></li><li><strong style="color: var(--white); margin-top: var(--spacing-sm); display: block;">Noida</strong></li><li><a href="#">Corporate Office</a></li><li><strong style="color: var(--white); margin-top: var(--spacing-sm); display: block;">Ahmedabad</strong></li><li><a href="#">Gujarat Office</a></li><li><strong style="color: var(--white); margin-top: var(--spacing-sm); display: block;">Australia</strong></li><li><a href="#">Parramatta, NSW</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>Â© 2026. Braj Kutir | Design & Developed by Sepia Advertising</p><p><a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a> | <a href="#">Our Team</a></p></div>
-  </div></footer>
-
-  <button id="backToTop" style="display: none; position: fixed; bottom: var(--spacing-xl); right: var(--spacing-xl); width: 56px; height: 56px; background: var(--primary); color: var(--white); border: none; border-radius: var(--radius-full); font-size: 1.2rem; cursor: pointer; box-shadow: var(--shadow-lg); transition: var(--transition); z-index: 1000;"><i class="fas fa-arrow-up"></i></button>
-
+  <header class="collection-hero"><div class="container"><span class="eyebrow-dot"></span><span class="home-eyebrow">The Braj Kutir collection</span><h1>Find a place that<br><em>feels like yours.</em></h1><p>From a quiet weekend home to a considered investment, explore spaces chosen for their sense of place, potential and permanence.</p></div></header>
+  <main>
+    <section class="project-discovery"><div class="container">
+      <div class="discovery-head"><div><span class="home-eyebrow">Explore the collection</span><h2>Projects, <em>with context.</em></h2></div><span class="result-count"><strong id="projectCount"><?= count($matches) ?></strong> spaces to explore</span></div>
+      <form class="discovery-filters" id="projectFilters" method="get">
+        <label>Location<select name="location"><option value="all">All locations</option><option value="Keshav" <?= $filters['location']==='Keshav'?'selected':'' ?>>Keshav Dham Road</option><option value="NH-19" <?= $filters['location']==='NH-19'?'selected':'' ?>>NH-19 / Chatikara</option><option value="Vrindavan" <?= $filters['location']==='Vrindavan'?'selected':'' ?>>Vrindavan</option></select></label>
+        <label>Property type<select name="type"><option value="all">All types</option><option <?= $filters['type']==='Residential'?'selected':'' ?>>Residential</option><option <?= $filters['type']==='Plots & Land'?'selected':'' ?>>Plots &amp; Land</option><option <?= $filters['type']==='Commercial'?'selected':'' ?>>Commercial</option></select></label>
+        <label>Budget<select name="budget"><option value="all">Any budget</option><option value="under-1cr" <?= $filters['budget']==='under-1cr'?'selected':'' ?>>Under ₹1 Cr</option><option value="1cr-3cr" <?= $filters['budget']==='1cr-3cr'?'selected':'' ?>>₹1–3 Cr</option></select></label>
+        <label>Availability<select name="status"><option value="all">Any status</option><option <?= $filters['status']==='Selling now'?'selected':'' ?>>Selling now</option><option <?= $filters['status']==='Ready to move'?'selected':'' ?>>Ready to move</option><option <?= $filters['status']==='Upcoming'?'selected':'' ?>>Upcoming</option></select></label>
+        <label>Configuration<select name="configuration"><option value="all">Any configuration</option><option <?= $filters['configuration']==='1 BHK'?'selected':'' ?>>1 BHK</option><option <?= $filters['configuration']==='Plots'?'selected':'' ?>>Plots</option><option <?= $filters['configuration']==='Farm plots'?'selected':'' ?>>Farm plots</option><option <?= $filters['configuration']==='Retail & offices'?'selected':'' ?>>Retail &amp; offices</option></select></label>
+        <button class="filter-reset" type="button" id="clearFilters">Clear all</button>
+      </form>
+      <div class="collection-grid" id="projectGrid"><?php foreach ($matches as $project): ?>
+        <article class="collection-card reveal" data-location="<?= htmlspecialchars($project['location']) ?>" data-type="<?= htmlspecialchars($project['type']) ?>" data-budget="<?= $project['budget_key'] ?>" data-status="<?= htmlspecialchars($project['status']) ?>" data-configuration="<?= htmlspecialchars($project['configuration']) ?>">
+          <a class="collection-image" href="project.php?project=<?= urlencode($project['slug']) ?>" style="background-image:url('<?= htmlspecialchars($project['image']) ?>')"><span><?= htmlspecialchars($project['tag']) ?></span><i class="fas fa-arrow-up-right-from-square"></i></a>
+          <div class="collection-copy"><div class="project-type"><?= htmlspecialchars($project['type']) ?> · <?= htmlspecialchars($project['location']) ?></div><h3><?= htmlspecialchars($project['name']) ?></h3><p><?= htmlspecialchars($project['intro']) ?></p><div class="collection-meta"><span><small>From</small><?= htmlspecialchars($project['budget']) ?></span><span><small>Configuration</small><?= htmlspecialchars($project['configuration']) ?></span></div><a class="text-arrow" href="project.php?project=<?= urlencode($project['slug']) ?>">View project <i class="fas fa-arrow-right"></i></a></div>
+        </article>
+      <?php endforeach; ?></div>
+      <div class="empty-state" id="emptyState" <?= count($matches) ? 'hidden' : '' ?>><h3>Nothing matches just yet.</h3><p>Try widening your search and discover a different way to be in Vrindavan.</p><button class="home-button home-button-dark" type="button" id="emptyClear">Reset filters</button></div>
+    </div></section>
+    <section class="collection-note"><div class="container"><div><span class="home-eyebrow">A little more than property</span><h2>Good decisions begin<br><em>with good advice.</em></h2></div><p>Every project is different. Our Vrindavan team brings local knowledge, transparent guidance and a slower, more considered way to find your place.</p><a class="under-link" href="#enquire">Speak with an advisor <i class="fas fa-arrow-right"></i></a></div></section>
+    <section class="project-enquiry" id="enquire"><div class="container"><div><span class="home-eyebrow">Your next chapter</span><h2>Let’s find your<br><em>place in Braj.</em></h2><p>Tell us what you are looking for. We’ll share a considered shortlist, not a sales pitch.</p></div><form id="contactForm" class="enquiry-form"><input name="name" placeholder="Your name" required><input name="phone" placeholder="Phone number" required><select name="interest"><option>I'm exploring a residence</option><option>I'm exploring land</option><option>I'm exploring commercial</option></select><button class="home-button home-button-light" type="submit">Begin the conversation <i class="fas fa-arrow-right"></i></button></form></div></section>
+  </main>
   <script src="script.js"></script>
-</body>
-</html>
-
+</body></html>

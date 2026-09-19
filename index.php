@@ -16,13 +16,13 @@
     <div class="container">
       <a href="index.php" class="nav-logo"><span class="home-mark">BK</span><span class="home-logo-word">Braj Kutir<small>REAL ESTATE</small></span></a>
       <div class="home-nav-links">
-        <a href="#projects">Projects</a><a href="#why-vrindavan">Why Vrindavan</a><a href="aboutus.php">About us</a><a href="#journal">Insights</a>
+        <a href="#projects">Projects</a><a href="locations.php">Locations</a><a href="#why-vrindavan">Why Vrindavan</a><a href="aboutus.php">About us</a><a href="#journal">Insights</a>
       </div>
       <div class="home-nav-actions"><a href="tel:+919710560560" class="home-phone"><i class="fas fa-phone"></i> +91 9710 560 560</a><a href="#enquire" class="home-nav-cta">Schedule a visit <i class="fas fa-arrow-up-right-from-square"></i></a></div>
       <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
-  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" aria-label="Close menu">&times;</button><a href="#projects">Projects</a><a href="#why-vrindavan">Why Vrindavan</a><a href="aboutus.php">About us</a><a href="#journal">Insights</a><a href="#enquire">Schedule a visit</a></div>
+  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" aria-label="Close menu">&times;</button><a href="#projects">Projects</a><a href="locations.php">Locations</a><a href="#why-vrindavan">Why Vrindavan</a><a href="aboutus.php">About us</a><a href="#journal">Insights</a><a href="#enquire">Schedule a visit</a></div>
 
   <main>
     <section class="home-hero">
@@ -67,4 +67,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-

@@ -85,6 +85,38 @@ function initMobileMenu() {
 // FILTER TABS
 // ============================================
 function initFilterTabs() {
+  // Project discovery filters
+  const form = document.getElementById('projectFilters');
+  const grid = document.getElementById('projectGrid');
+  if (form && grid) {
+    const cards = [...grid.querySelectorAll('.collection-card')];
+    const count = document.getElementById('projectCount');
+    const empty = document.getElementById('emptyState');
+    const selects = [...form.querySelectorAll('select')];
+
+    const applyFilters = () => {
+      let visible = 0;
+      cards.forEach(card => {
+        const matches = selects.every(select => select.value === 'all' || card.dataset[select.name] === select.value || (select.name === 'location' && card.dataset.location.includes(select.value)));
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      if (count) count.textContent = visible;
+      if (empty) empty.hidden = visible > 0;
+    };
+
+    selects.forEach(select => select.addEventListener('change', applyFilters));
+    form.addEventListener('submit', event => event.preventDefault());
+    ['clearFilters', 'emptyClear'].forEach(id => {
+      const button = document.getElementById(id);
+      if (button) button.addEventListener('click', () => {
+        selects.forEach(select => { select.value = 'all'; });
+        applyFilters();
+      });
+    });
+    applyFilters();
+  }
+
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', function() {
       // Remove active class from all tabs in the same container
@@ -92,6 +124,7 @@ function initFilterTabs() {
       if (container) {
         container.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       }
+
       this.classList.add('active');
 
       const filter = this.getAttribute('data-filter');
@@ -350,6 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initMobileMenu();
   initFilterTabs();
+  initProjectDiscovery();
   initROICalculator();
   initContactForm();
   initProjectModal();
