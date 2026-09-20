@@ -15,7 +15,7 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
-      <div class="nav-contact"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
+      <div class="nav-contact"><i class="fas fa-phone"></i><span>+91 70800 05021</span></div>
       <div class="nav-links">
         <a href="index.php">Home</a>
         <div class="nav-dropdown"><a href="#">Services <i class="fas fa-chevron-down"></i></a>
@@ -163,8 +163,8 @@
       <div class="footer-brand">
         <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
         <p>Vrindavan's first dedicated real estate advisory, built on the promise of transparency, simplicity, and trust.</p>
-        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@brajkutir.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 70800 05021</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>sachin.paurush@vcm.org.in</span></div>
         <div class="footer-socials">
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -184,4 +184,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
 

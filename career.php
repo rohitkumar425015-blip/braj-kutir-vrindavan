@@ -14,7 +14,7 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
-      <div class="nav-contact"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
+      <div class="nav-contact"><i class="fas fa-phone"></i><span>+91 70800 05021</span></div>
       <div class="nav-links">
         <a href="index.php">Home</a>
         <div class="nav-dropdown"><a href="#">Services <i class="fas fa-chevron-down"></i></a>
@@ -92,8 +92,8 @@
       <div class="footer-brand">
         <a href="index.php" class="nav-logo"><div class="nav-logo-icon">B</div><div class="nav-logo-text">Braj Kutir</div></a>
         <p>Vrindavan's first dedicated real estate advisory, built on the promise of transparency, simplicity, and trust.</p>
-        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91-9710-560-560</span></div>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>info@brajkutir.com</span></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 70800 05021</span></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>sachin.paurush@vcm.org.in</span></div>
         <div class="footer-socials"><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div>
       </div>
       <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.php">Home</a></li><li><a href="aboutus.php">About Us</a></li><li><a href="projects.php">Projects</a></li><li><a href="invest-in-vrindavan.php">Invest in Vrindavan</a></li><li><a href="nri-desk.php">NRI Desk</a></li><li><a href="career.php">Career</a></li><li><a href="contact.php">Contact</a></li><li><a href="#">Partner with Us</a></li><li><a href="#">Blogs</a></li></ul></div>
@@ -107,4 +107,6 @@
   <script>document.getElementById('careerForm').addEventListener('submit', function(e) {e.preventDefault();alert('Thank you for your application! Our HR team will review it and get back to you soon.');this.reset();});</script>
 </body>
 </html>
+
+
 
